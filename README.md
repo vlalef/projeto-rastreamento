@@ -6,7 +6,8 @@
 3. [Initial Project Setup](#initial-project-setup)
 4. [Starting the Project](#starting-the-project)
 5. [Viewing the Database](#viewing-the-database)
-6. [Contact](#contact)
+6. [Testing via Postman](#testing-via-postman)
+7. [Contact](#contact)
 
 ### Introduction
 
@@ -107,7 +108,18 @@ To view the database, we recommend using pgAdmin. Follow the steps below to inst
       - **Maintenance database**: `laravel`
       - **Username**: `laravel`
       - **Password**: `laravel`
-
+### Testing via Postman
+To test the API endpoints, you can use Postman. Follow the steps below:
+1. **Install Postman** - [Official Documentation](https://www.postman.com/downloads/):
+    - Download and install Postman from the official website or install it via snapstore:
+    ```sh
+    sudo snap install postman
+    ```
+2. **Make a request**:
+    - Open Postman
+    - Create a new GET request
+    - Set the URL to `http://localhost:8000/api/entregas/{cpf}`, replacing `{cpf}` with the actual CPF.
+    - Click on the **Send** button to make the request.
 ### Contact
 - Author: Alef Vaz
 - Email: Alef.Vaz.Contato@gmail.com
