@@ -76,7 +76,7 @@ To start the project using Docker, follow the steps below in the root directory 
 
 5. Run the migrations to create the tables:
     ```sh
-    docker-compose exec app php artisan migrate
+    docker-compose exec app php artisan migrate:fresh
     ```
 
 6. Seed the database:
@@ -89,7 +89,7 @@ To start the project using Docker, follow the steps below in the root directory 
 To view the database, we recommend using pgAdmin. Follow the steps below to install and configure pgAdmin on Linux:
 * First, get the IP address of the container which is running the database to configure pgAdmin:
 ```sh
-  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' projeto-rastreamento_db_1
+  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' CONTAINER_ID (laravel_db)
 ```
 1. **Install pgAdmin**:
     ```sh
