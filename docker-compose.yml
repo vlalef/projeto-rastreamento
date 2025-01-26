@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    working_dir: /var/www
+    volumes:
+      - ./projeto-rastreamento:/var/www
+    networks:
+      - laravel
+    depends_on:
+      - db
+
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_webserver
+    working_dir: /var/www
+    volumes:
+      - ./projeto-rastreamento:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "8000:80"
+    networks:
+      - laravel
+    depends_on:
+      - app
+
+  db:
+    image: postgres:13
+    container_name: laravel_db
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  db_data:
